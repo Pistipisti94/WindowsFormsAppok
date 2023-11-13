@@ -11,8 +11,10 @@ using System.IO;
 
 namespace WindowsFormsAppok
 {
+
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +22,23 @@ namespace WindowsFormsAppok
 
         private void gombBetoltes_Click(object sender, EventArgs e)
         {
+            openFileDialog1.Filter = "txt fájl (*.txt)|*.txt|csv fájl (*.csv)|*.csv|Összes fájl (*.*)|*.*";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.Title = "Adatfájl neve";
+            openFileDialog1.InitialDirectory = Environment.CurrentDirectory;
 
+            if (openFileDialog1.ShowDialog(this)==DialogResult.OK)
+            {
+                forrasfajlneveinput.Text = openFileDialog1.FileName;
+                using (StreamReader sr = new StreamReader(openFileDialog1.FileName))
+                {
+                    sr.ReadLine();
+                    while (!sr.EndOfStream)
+                    {
+                        listBoxlista.Items.Add(new Orszag(sr.ReadLine()));
+                    }
+                }
+            }
         }
     }
 }
