@@ -40,5 +40,31 @@ namespace WindowsFormsAppok
                 }
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            comboBox1.SelectedIndex = 0;
+            forrasfajlneveinput.Text = "orszagok";
+        }
+
+        private void ezbetolt_Click(object sender, EventArgs e)
+        {
+            if (forrasfajlneveinput.Text != "") { 
+                string path = Environment.CurrentDirectory + "//";
+                openFileDialog1.CheckFileExists = true;
+                using (StreamReader sr = new StreamReader(path + forrasfajlneveinput.Text + ".csv"))
+                {
+                    sr.ReadLine();
+                    while (!sr.EndOfStream)
+                    {
+                        listBoxlista.Items.Add(new Orszag(sr.ReadLine()));
+                    }
+                }
+            }
+            else
+            {
+
+            }
+        }
     }
 }

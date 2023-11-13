@@ -10,11 +10,10 @@ namespace WindowsFormsAppok
     {
         string orszagNev;
         double terulet;
-
         public Orszag(string line)
         {
             string[] sor = line.Split(';');
-            orszagNev = sor[0];
+            orszagNev = sor[0].ToLower();
             Terulet = double.Parse(sor[1].Trim().Replace('.', ','));
         }
 
@@ -22,7 +21,8 @@ namespace WindowsFormsAppok
         public double Terulet { get => terulet; set => terulet = value; }
         public override string ToString()
         {
-            return orszagNev;
+            return orszagNev + " területe: " + terulet;
         }
     }
+    
 }
