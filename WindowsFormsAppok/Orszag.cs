@@ -21,7 +21,7 @@ namespace WindowsFormsAppok
         public double Terulet { get => terulet; set => terulet = value; }
         public override string ToString()
         {
-            return orszagNev + " területe: " + terulet;
+            return orszagNev + " területe: " + terulet.ToString("#,##0.0");
         }
     }
     
