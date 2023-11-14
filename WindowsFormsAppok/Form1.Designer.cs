@@ -46,7 +46,7 @@
             this.gombKiiras = new System.Windows.Forms.Button();
             this.gombMinMaxKivalasztas = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.keresesInput = new System.Windows.Forms.TextBox();
             this.gombKereses = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.gombBetoltes = new System.Windows.Forms.Button();
@@ -246,12 +246,13 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Ország keresése:";
             // 
-            // textBox3
+            // keresesInput
             // 
-            this.textBox3.Location = new System.Drawing.Point(208, 282);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(190, 20);
-            this.textBox3.TabIndex = 4;
+            this.keresesInput.Location = new System.Drawing.Point(208, 282);
+            this.keresesInput.Name = "keresesInput";
+            this.keresesInput.Size = new System.Drawing.Size(190, 20);
+            this.keresesInput.TabIndex = 4;
+            this.keresesInput.KeyUp += new System.Windows.Forms.KeyEventHandler(this.betunkent);
             // 
             // gombKereses
             // 
@@ -266,6 +267,7 @@
             this.gombKereses.TabIndex = 0;
             this.gombKereses.Text = "Keresés";
             this.gombKereses.UseVisualStyleBackColor = true;
+            this.gombKereses.Click += new System.EventHandler(this.gombKereses_Click);
             // 
             // openFileDialog1
             // 
@@ -293,7 +295,7 @@
             this.ClientSize = new System.Drawing.Size(411, 373);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.keresesInput);
             this.Controls.Add(this.eredmenyfajlneveinput);
             this.Controls.Add(this.forrasfajlneveinput);
             this.Controls.Add(this.listBoxlista);
@@ -342,7 +344,7 @@
         private System.Windows.Forms.Button gombKiiras;
         private System.Windows.Forms.Button gombMinMaxKivalasztas;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox keresesInput;
         private System.Windows.Forms.Button gombKereses;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button gombBetoltes;

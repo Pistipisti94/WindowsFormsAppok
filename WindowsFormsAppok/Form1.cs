@@ -180,5 +180,37 @@ namespace WindowsFormsAppok
                 MessageBox.Show($"A legnagyobb területű ország neve: {keresettOrszag}, területe: {keresettErtek}");
             }
         }
+
+        private void gombKereses_Click(object sender, EventArgs e)
+        {
+            string keres = keresesInput.Text;
+            string talalat = "";
+            if (keresesInput.Text != "")
+            {
+                foreach (Orszag item in listBoxlista.Items)
+                {
+                    if (keres.Equals(item.OrszagNev))
+                    {
+                        talalat = item.OrszagNev;
+                        break;
+                    }
+                    else
+                    {
+                        talalat = "Nincs ilyen ország";
+                    }
+                }
+                MessageBox.Show(talalat, "Keresés szövege:", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Nincs keresésnek megadott szöveg!","Keresés szövege:",MessageBoxButtons.OK);
+            }
+            
+        }
+
+        private void betunkent(object sender, KeyEventArgs e)
+        {
+            MessageBox.Show(keresesInput.Text);
+        }
     }
 }
