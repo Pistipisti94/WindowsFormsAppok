@@ -55,6 +55,7 @@
             // 
             // ezbetolt
             // 
+            this.ezbetolt.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ezbetolt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ezbetolt.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.ezbetolt.FlatAppearance.BorderSize = 2;
@@ -65,11 +66,12 @@
             this.ezbetolt.Size = new System.Drawing.Size(94, 23);
             this.ezbetolt.TabIndex = 0;
             this.ezbetolt.Text = "Betöltés";
-            this.ezbetolt.UseVisualStyleBackColor = true;
+            this.ezbetolt.UseVisualStyleBackColor = false;
             this.ezbetolt.Click += new System.EventHandler(this.ezbetolt_Click);
             // 
             // comboBoxvalasztas
             // 
+            this.comboBoxvalasztas.BackColor = System.Drawing.Color.Chocolate;
             this.comboBoxvalasztas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxvalasztas.FormattingEnabled = true;
             this.comboBoxvalasztas.Items.AddRange(new object[] {
@@ -97,9 +99,13 @@
             this.listBoxlista.Name = "listBoxlista";
             this.listBoxlista.Size = new System.Drawing.Size(190, 251);
             this.listBoxlista.TabIndex = 3;
+            this.listBoxlista.MouseDown += new System.Windows.Forms.MouseEventHandler(this.szinvissza);
+            this.listBoxlista.MouseLeave += new System.EventHandler(this.listBoxlista_MouseLeave);
+            this.listBoxlista.MouseHover += new System.EventHandler(this.szinvaltoztatas);
             // 
             // forrasfajlneveinput
             // 
+            this.forrasfajlneveinput.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.forrasfajlneveinput.Location = new System.Drawing.Point(12, 26);
             this.forrasfajlneveinput.Name = "forrasfajlneveinput";
             this.forrasfajlneveinput.Size = new System.Drawing.Size(190, 20);
@@ -129,6 +135,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Info;
             this.groupBox1.Controls.Add(this.kevesebbmintszazezer);
             this.groupBox1.Controls.Add(this.szazezernelnagyobb);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -151,6 +158,7 @@
             // 
             // gombTeruletekAtlaga
             // 
+            this.gombTeruletekAtlaga.BackColor = System.Drawing.SystemColors.GrayText;
             this.gombTeruletekAtlaga.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gombTeruletekAtlaga.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.gombTeruletekAtlaga.FlatAppearance.BorderSize = 2;
@@ -161,11 +169,12 @@
             this.gombTeruletekAtlaga.Size = new System.Drawing.Size(190, 23);
             this.gombTeruletekAtlaga.TabIndex = 0;
             this.gombTeruletekAtlaga.Text = "Területek átlaga";
-            this.gombTeruletekAtlaga.UseVisualStyleBackColor = true;
+            this.gombTeruletekAtlaga.UseVisualStyleBackColor = false;
             this.gombTeruletekAtlaga.Click += new System.EventHandler(this.gombTeruletekAtlaga_Click);
             // 
             // gombMegszamolas
             // 
+            this.gombMegszamolas.BackColor = System.Drawing.SystemColors.Info;
             this.gombMegszamolas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gombMegszamolas.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.gombMegszamolas.FlatAppearance.BorderSize = 2;
@@ -176,7 +185,7 @@
             this.gombMegszamolas.Size = new System.Drawing.Size(190, 23);
             this.gombMegszamolas.TabIndex = 0;
             this.gombMegszamolas.Text = "Megszámolás";
-            this.gombMegszamolas.UseVisualStyleBackColor = true;
+            this.gombMegszamolas.UseVisualStyleBackColor = false;
             this.gombMegszamolas.Click += new System.EventHandler(this.gombMegszamolas_Click);
             // 
             // label2
@@ -191,6 +200,7 @@
             // 
             // eredmenyfajlneveinput
             // 
+            this.eredmenyfajlneveinput.BackColor = System.Drawing.Color.RosyBrown;
             this.eredmenyfajlneveinput.Location = new System.Drawing.Point(208, 119);
             this.eredmenyfajlneveinput.Name = "eredmenyfajlneveinput";
             this.eredmenyfajlneveinput.Size = new System.Drawing.Size(190, 20);
@@ -208,6 +218,7 @@
             // 
             // gombKiiras
             // 
+            this.gombKiiras.BackColor = System.Drawing.Color.RosyBrown;
             this.gombKiiras.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gombKiiras.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.gombKiiras.FlatAppearance.BorderSize = 2;
@@ -218,11 +229,12 @@
             this.gombKiiras.Size = new System.Drawing.Size(190, 23);
             this.gombKiiras.TabIndex = 0;
             this.gombKiiras.Text = "Kiírás";
-            this.gombKiiras.UseVisualStyleBackColor = true;
+            this.gombKiiras.UseVisualStyleBackColor = false;
             this.gombKiiras.Click += new System.EventHandler(this.gombKiiras_Click);
             // 
             // gombMinMaxKivalasztas
             // 
+            this.gombMinMaxKivalasztas.BackColor = System.Drawing.Color.Chocolate;
             this.gombMinMaxKivalasztas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gombMinMaxKivalasztas.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.gombMinMaxKivalasztas.FlatAppearance.BorderSize = 2;
@@ -233,7 +245,7 @@
             this.gombMinMaxKivalasztas.Size = new System.Drawing.Size(190, 23);
             this.gombMinMaxKivalasztas.TabIndex = 0;
             this.gombMinMaxKivalasztas.Text = "Minimum / Maximum kiválasztása";
-            this.gombMinMaxKivalasztas.UseVisualStyleBackColor = true;
+            this.gombMinMaxKivalasztas.UseVisualStyleBackColor = false;
             this.gombMinMaxKivalasztas.Click += new System.EventHandler(this.gombMinMaxKivalasztas_Click);
             // 
             // label4
@@ -248,6 +260,7 @@
             // 
             // keresesInput
             // 
+            this.keresesInput.BackColor = System.Drawing.SystemColors.Highlight;
             this.keresesInput.Location = new System.Drawing.Point(208, 282);
             this.keresesInput.Name = "keresesInput";
             this.keresesInput.Size = new System.Drawing.Size(190, 20);
@@ -256,6 +269,7 @@
             // 
             // gombKereses
             // 
+            this.gombKereses.BackColor = System.Drawing.SystemColors.Highlight;
             this.gombKereses.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gombKereses.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.gombKereses.FlatAppearance.BorderSize = 2;
@@ -266,7 +280,7 @@
             this.gombKereses.Size = new System.Drawing.Size(190, 23);
             this.gombKereses.TabIndex = 0;
             this.gombKereses.Text = "Keresés";
-            this.gombKereses.UseVisualStyleBackColor = true;
+            this.gombKereses.UseVisualStyleBackColor = false;
             this.gombKereses.Click += new System.EventHandler(this.gombKereses_Click);
             // 
             // openFileDialog1
@@ -275,6 +289,7 @@
             // 
             // gombBetoltes
             // 
+            this.gombBetoltes.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.gombBetoltes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gombBetoltes.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.gombBetoltes.FlatAppearance.BorderSize = 2;
@@ -285,13 +300,14 @@
             this.gombBetoltes.Size = new System.Drawing.Size(94, 23);
             this.gombBetoltes.TabIndex = 0;
             this.gombBetoltes.Text = "Tallózás";
-            this.gombBetoltes.UseVisualStyleBackColor = true;
+            this.gombBetoltes.UseVisualStyleBackColor = false;
             this.gombBetoltes.Click += new System.EventHandler(this.gombBetoltes_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(411, 373);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.checkBox1);

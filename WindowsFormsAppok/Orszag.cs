@@ -24,5 +24,4 @@ namespace WindowsFormsAppok
             return orszagNev + " területe: " + terulet.ToString("#,##0.0");
         }
     }
-    
 }

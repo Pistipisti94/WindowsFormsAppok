@@ -97,6 +97,7 @@ namespace WindowsFormsAppok
 
         private void szamolSzazezernelNagyobb()
         {
+            
             int db = 0;
             foreach (Orszag item in listBoxlista.Items)
             {
@@ -106,6 +107,13 @@ namespace WindowsFormsAppok
                 }
             }
             MessageBox.Show($"Több mint 100.000 = {db}", "100.000-nél nagyobb területű országok száma:", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+            foreach (Orszag item in listBoxlista.Items)
+            {
+                if (item.Terulet <= 100000)
+                {
+                    listBoxlista.Items.Remove(item);
+                }
+            }
 
         }
 
@@ -211,6 +219,20 @@ namespace WindowsFormsAppok
         private void betunkent(object sender, KeyEventArgs e)
         {
             MessageBox.Show(keresesInput.Text);
+        }
+
+        private void szinvaltoztatas(object sender, EventArgs e)
+        {
+            listBoxlista.BackColor = Color.Bisque;
+        }
+
+        private void szinvissza(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void listBoxlista_MouseLeave(object sender, EventArgs e)
+        {
+            listBoxlista.BackColor = DefaultBackColor;
         }
     }
 }
