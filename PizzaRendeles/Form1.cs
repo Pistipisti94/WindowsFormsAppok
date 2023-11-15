@@ -51,5 +51,45 @@ namespace PizzaRendeles
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {           
+            MessageBox.Show($"Tétel:  Végösszeg:", "Véglegesítés",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+        }
+
+        private void pizzaValasztas_Click(object sender, EventArgs e)
+        {
+            rendelesHozzaadas();
+            int db = rendelesLista.Items.Count;
+            pizzamennyiseg.Text = $"Rendelni kívánt pizzák száma: {db.ToString()}";
+
+        }
+
+        private void rendelesHozzaadas()
+        {
+                rendelesLista.Items.Add((Pizza)pizzaListaBox.SelectedItem);
+        }
+
+        private void szamlaIgeny_CheckedChanged(object sender, EventArgs e)
+        {
+            if (szamlaIgeny.Checked)
+            {
+                labelSzamla.Text = "Számlaigény: Van";
+            }
+            else
+            {
+                labelSzamla.Text = "Számlaigény: Nincs";
+            }
+        }
+
+        private void kezpenz_MouseClick(object sender, MouseEventArgs e)
+        {
+            labelFizetes.Text = "Fizetés: Kézpénzzel";
+        }
+
+        private void kartya_Click(object sender, EventArgs e)
+        {
+            labelFizetes.Text = "Fizetés: Kártyával";
+        }
     }
 }
