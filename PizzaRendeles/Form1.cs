@@ -46,5 +46,10 @@ namespace PizzaRendeles
             atlag = atlag / pizzaListaBox.Items.Count;
             MessageBox.Show($"A Pizzák árának átlaga: {atlag.ToString()} forint.", "Átlagár", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void pizzaListaBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
