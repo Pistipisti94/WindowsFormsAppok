@@ -5,6 +5,10 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsAppok", "WindowsFormsAppok\WindowsFormsAppok.csproj", "{EE9FDC86-362A-45D4-8A64-2410AB05B169}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pizza házi", "Pizza házi", "{5F1B0944-BD06-4F89-9DBA-055842C3E475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaRendeles", "PizzaRendeles\PizzaRendeles.csproj", "{759F56A9-3667-42F5-B36D-979D258ABE8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{EE9FDC86-362A-45D4-8A64-2410AB05B169}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE9FDC86-362A-45D4-8A64-2410AB05B169}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE9FDC86-362A-45D4-8A64-2410AB05B169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{759F56A9-3667-42F5-B36D-979D258ABE8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{759F56A9-3667-42F5-B36D-979D258ABE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{759F56A9-3667-42F5-B36D-979D258ABE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{759F56A9-3667-42F5-B36D-979D258ABE8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{759F56A9-3667-42F5-B36D-979D258ABE8F} = {5F1B0944-BD06-4F89-9DBA-055842C3E475}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0CAA1A06-F415-407D-AA3E-B7FBA4272FA9}

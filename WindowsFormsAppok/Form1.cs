@@ -70,7 +70,7 @@ namespace WindowsFormsAppok
         private void gombTeruletekAtlaga_Click(object sender, EventArgs e)
         {
             atlagszamitas();
-            }
+        }
 
         private void atlagszamitas()
         {
