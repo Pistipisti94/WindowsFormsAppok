@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tagdij", "tagdij", "{4C688D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tagdij", "tagdij\tagdij.csproj", "{5B0ECD05-D82B-4065-9A3B-966D6F2D4FFA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Login", "Login", "{3C27CE84-8DED-4B2C-8FFC-622548DA72AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsAppLogin", "WindowsFormsAppLogin\WindowsFormsAppLogin.csproj", "{577364D2-2992-4016-B859-C28BEE443FC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{5B0ECD05-D82B-4065-9A3B-966D6F2D4FFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B0ECD05-D82B-4065-9A3B-966D6F2D4FFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B0ECD05-D82B-4065-9A3B-966D6F2D4FFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{577364D2-2992-4016-B859-C28BEE443FC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{577364D2-2992-4016-B859-C28BEE443FC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{577364D2-2992-4016-B859-C28BEE443FC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{577364D2-2992-4016-B859-C28BEE443FC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{759F56A9-3667-42F5-B36D-979D258ABE8F} = {5F1B0944-BD06-4F89-9DBA-055842C3E475}
 		{5B0ECD05-D82B-4065-9A3B-966D6F2D4FFA} = {4C688D12-649C-4D03-AF88-1F4527CB2684}
+		{577364D2-2992-4016-B859-C28BEE443FC6} = {3C27CE84-8DED-4B2C-8FFC-622548DA72AB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0CAA1A06-F415-407D-AA3E-B7FBA4272FA9}
