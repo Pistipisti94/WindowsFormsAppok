@@ -20,7 +20,7 @@ namespace WindowsFormsAppLogin
         }
         public override string ToString()
         {
-            return this.termeknev + " " + this.ar + " Forint " + this.db + " darab";
+            return this.termeknev.ToUpper() + " " + this.ar.ToString("#00,.000") + " Forint " + this.db + " darab";
         }
     }
 }
