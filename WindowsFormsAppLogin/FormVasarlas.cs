@@ -14,6 +14,9 @@ namespace WindowsFormsAppLogin
 {
     public partial class FormVasarlas : Form
     {
+        int vid = 1;
+        int tid = 1;
+        public Formlogin login;
         public FormVasarlas()
         {
             InitializeComponent();             
@@ -36,16 +39,39 @@ namespace WindowsFormsAppLogin
         private void termekRendelesLeadasa()
         {
             
-            string semmi = listBox_rendelttermek.Text;
-            if (string.IsNullOrEmpty(semmi))
+            
+            if (listBox_termekek.SelectedItem == null)
             {
-                MessageBox.Show("Nincs termék a listában", "Nope", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Nincs termék kiválasztva", "Nope", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+
+
+            int vasaroltaid = vid;
+            int termekid = tid;
+            string mennyiseg = numericUpDown_mennyiseg.Text;
+            int ar = int.Parse(mennyiseg);
+            string fizetesmod = "";
+            
+            
+            if (radioButton_card.Checked)
+            {
+                 fizetesmod = "kártya";
+            }
+            else
+            {
+                fizetesmod = "készpénz";
+            }
+            
             // -- STB --
-            Program.command.CommandText = "INSERT INTO `vasarlas`(`vasarloid`, `termekid`, `datum`, `rendelt_db`) VALUES (null,null,null,@db)";
+            Program.command.CommandText = "INSERT INTO `vasarlas` (`vasarloId`, `termekid`, `datum`, `vasaroltdb`, `osszeg`, `fizetesmod`) VALUES (@vasarolta, @termeket, current_timestamp(), @mennyit, @termekszorar, @mivel);";
             Program.command.Parameters.Clear();
-            Program.command.Parameters.AddWithValue("@db", semmi);
+            Program.command.Parameters.AddWithValue("@vasarolta",vasaroltaid );
+            Program.command.Parameters.AddWithValue("@termeket",termekid );
+            Program.command.Parameters.AddWithValue("@mennyit",mennyiseg );
+            Program.command.Parameters.AddWithValue("@termekszorar", ar);
+            Program.command.Parameters.AddWithValue("@mivel", fizetesmod);
             try
             {
                 if (Program.connection.State != ConnectionState.Open)
@@ -63,6 +89,8 @@ namespace WindowsFormsAppLogin
         private void FormVasarlas_Load(object sender, EventArgs e)
         {
             termekekBetoltese();
+
+            label1.Text = "Lajos";
         }
 
         private void termekekBetoltese()
@@ -73,13 +101,13 @@ namespace WindowsFormsAppLogin
             {
                 if (Program.connection.State != ConnectionState.Open)
                     Program.connection.Open();
-                Program.command.CommandText = "SELECT `termeknev`,`ar`,`db` FROM `termek` WHERE 1 ORDER BY termeknev";
+                Program.command.CommandText = "SELECT `termekid`,`termeknev`,`ar`,`db` FROM `termek` WHERE 1 ORDER BY termeknev";
 
                 using (MySqlDataReader dr = Program.command.ExecuteReader())
                 {
                     while (dr.Read())
                     {
-                        Termekek beolvasottTermek = new Termekek(dr.GetString("termeknev"), dr.GetInt32("ar"), dr.GetInt32("db"));
+                        Termekek beolvasottTermek = new Termekek(dr.GetInt32("termekid"), dr.GetString("termeknev"), dr.GetInt32("ar"), dr.GetInt32("db"));
                         listBox_termekek.Items.Add(beolvasottTermek);
                     }
                     dr.Close();
@@ -102,20 +130,13 @@ namespace WindowsFormsAppLogin
 
         private void button_hozzaad_Click(object sender, EventArgs e)
         {
-            foreach (var item in listBox_rendelttermek)
-            {
-                
-            }
-            if (listBox_rendelttermek.Items[0] ==)
-            {
-
-            }
-            listBox_rendelttermek.Items.Add(listBox_termekek.SelectedItem); 
+           
+            
         }
 
         private void button_listaelemtorles_Click(object sender, EventArgs e)
         {
-            listBox_rendelttermek.Items.Remove(listBox_rendelttermek.SelectedIndex); // nem jó
+           
         }
 
     }

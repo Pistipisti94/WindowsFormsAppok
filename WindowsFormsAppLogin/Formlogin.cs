@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsAppLogin
 {
+
     public partial class Formlogin : Form
     {
         public Formlogin()
@@ -38,14 +39,10 @@ namespace WindowsFormsAppLogin
                 }
                 else
                 {
-
                     MessageBox.Show("Hibás felhasználónév vagy jelszó","Hiba!",MessageBoxButtons.OK,MessageBoxIcon.Error);
-
                 }
-
             }
         }
-
         private void button_regisztracio_Click(object sender, EventArgs e)
         {
             button_bejelentkezes.Visible = false;
