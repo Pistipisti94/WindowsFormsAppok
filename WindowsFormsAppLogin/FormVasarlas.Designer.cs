@@ -56,7 +56,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.numericUpDown_raktaron = new System.Windows.Forms.NumericUpDown();
-            this.toolStripComboBox_termekek = new System.Windows.Forms.ToolStripComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -291,8 +290,6 @@
             // 
             // módosításToolStripMenuItem
             // 
-            this.módosításToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox_termekek});
             this.módosításToolStripMenuItem.Name = "módosításToolStripMenuItem";
             this.módosításToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.módosításToolStripMenuItem.Text = "Módosítás";
@@ -403,11 +400,6 @@
             0});
             this.numericUpDown_raktaron.Visible = false;
             // 
-            // toolStripComboBox_termekek
-            // 
-            this.toolStripComboBox_termekek.Name = "toolStripComboBox_termekek";
-            this.toolStripComboBox_termekek.Size = new System.Drawing.Size(121, 23);
-            // 
             // FormVasarlas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -470,6 +462,5 @@
         private System.Windows.Forms.Label db_label;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDown_raktaron;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox_termekek;
     }
 }

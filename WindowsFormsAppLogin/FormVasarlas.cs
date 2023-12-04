@@ -99,7 +99,6 @@ namespace WindowsFormsAppLogin
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Hibááááááááás.");
-                MessageBox.Show(Program.command.CommandText);
                 return;
             }
 
@@ -112,7 +111,7 @@ namespace WindowsFormsAppLogin
             label1.Text = Program.userId.ToString();            
         }
 
-        private void termekekBetoltese()
+        public void termekekBetoltese()
         {
             
                 listBox_termekek.Items.Clear();
@@ -128,9 +127,6 @@ namespace WindowsFormsAppLogin
                     {
                         Termekek beolvasottTermek = new Termekek(dr.GetInt32("termekid"), dr.GetString("termeknev"), dr.GetInt32("ar"), dr.GetInt32("db"));
                         listBox_termekek.Items.Add(beolvasottTermek);
-                        Termekek beolvasottTermek2 = new Termekek(dr.GetInt32("termekid"), dr.GetString("termeknev"), dr.GetInt32("ar"), dr.GetInt32("db"));
-                        toolStripComboBox_termekek.Items.Add(beolvasottTermek2);
-                        toolStripComboBox_termekek.SelectedIndex = 0;
                     }
                     dr.Close();
                 }
@@ -182,6 +178,7 @@ namespace WindowsFormsAppLogin
         {
             FormTermek formTermekUj = new FormTermek("Új");
             formTermekUj.ShowDialog();
+            
 
 
         }
