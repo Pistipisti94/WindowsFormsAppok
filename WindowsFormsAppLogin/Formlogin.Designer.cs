@@ -46,7 +46,7 @@
             this.button_bejelentkezes.Location = new System.Drawing.Point(120, 169);
             this.button_bejelentkezes.Name = "button_bejelentkezes";
             this.button_bejelentkezes.Size = new System.Drawing.Size(115, 42);
-            this.button_bejelentkezes.TabIndex = 0;
+            this.button_bejelentkezes.TabIndex = 3;
             this.button_bejelentkezes.Text = "Bejelentkezés";
             this.button_bejelentkezes.UseVisualStyleBackColor = true;
             this.button_bejelentkezes.Click += new System.EventHandler(this.button_bejelentkezes_Click);
@@ -63,14 +63,14 @@
             this.textBox_jelszo.Location = new System.Drawing.Point(98, 111);
             this.textBox_jelszo.Name = "textBox_jelszo";
             this.textBox_jelszo.Size = new System.Drawing.Size(163, 20);
-            this.textBox_jelszo.TabIndex = 1;
+            this.textBox_jelszo.TabIndex = 2;
             // 
             // button_regisztracio
             // 
             this.button_regisztracio.Location = new System.Drawing.Point(98, 359);
             this.button_regisztracio.Name = "button_regisztracio";
             this.button_regisztracio.Size = new System.Drawing.Size(158, 50);
-            this.button_regisztracio.TabIndex = 0;
+            this.button_regisztracio.TabIndex = 4;
             this.button_regisztracio.Text = "Regisztráció";
             this.button_regisztracio.UseVisualStyleBackColor = true;
             this.button_regisztracio.Click += new System.EventHandler(this.button_regisztracio_Click);

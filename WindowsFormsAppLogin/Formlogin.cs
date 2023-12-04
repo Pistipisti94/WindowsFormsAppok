@@ -24,7 +24,7 @@ namespace WindowsFormsAppLogin
             string nev = textBox_nev.Text;
             string jelszo = textBox_jelszo.Text;
             //SELECT vasarlo.jelszo FROM `vasarlo` WHERE vasarlo.nev = "lajos"
-            Program.command.CommandText = "SELECT vasarlo.jelszo FROM `vasarlo` WHERE vasarlo.nev = @nev";
+            Program.command.CommandText = "SELECT vasarlo.jelszo,vasarlo.vasarloid FROM `vasarlo` WHERE vasarlo.nev = @nev";
             Program.command.Parameters.Clear();
             Program.command.Parameters.AddWithValue("@nev",nev);
             MySqlDataReader reader = Program.command.ExecuteReader();
@@ -33,6 +33,7 @@ namespace WindowsFormsAppLogin
                 string taroltjelszo = reader.GetString("jelszo");
                 if (taroltjelszo.Equals(jelszo))
                 {
+                    Program.userId = reader.GetInt32("vasarloid");
                     reader.Close();
                     Program.formVasarlas.Show();
                     this.Hide();

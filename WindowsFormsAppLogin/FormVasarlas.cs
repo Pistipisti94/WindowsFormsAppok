@@ -14,8 +14,6 @@ namespace WindowsFormsAppLogin
 {
     public partial class FormVasarlas : Form
     {
-        int vid = 1;
-        int tid = 1;
         public Formlogin login;
         public FormVasarlas()
         {
@@ -24,18 +22,26 @@ namespace WindowsFormsAppLogin
 
         private void button_rendeles_Click(object sender, EventArgs e)
         {
-            termekRendelesLeadasa();
-            //termekDarabFrissitese();
-            termekekBetoltese();
+            if (numericUpDown_mennyiseg.Value == 0)
+            {
+                MessageBox.Show("Elfogyott");
+                return;
+            }
+            string szoveg = $"Valóban megszeretné vásárolni a {numericUpDown_mennyiseg.Value} darab {textBox_termeknev.Text} terméket, {(numericUpDown_mennyiseg.Value * numericUpDown_termekar.Value).ToString("#,##0")} forint értékben?";
+            if (MessageBox.Show(szoveg,"Megerősítés",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                termekRendelesLeadasa();
+                listBox_termekek.Items.Clear();
+                termekekBetoltese();
+            }
+            else
+            {
+                return;
+            }
+           
             
 
         }
-
-        private void termekDarabFrissitese()
-        {
-            throw new NotImplementedException();
-        }
-
         private void termekRendelesLeadasa()
         {
             
@@ -45,16 +51,7 @@ namespace WindowsFormsAppLogin
                 MessageBox.Show("Nincs termék kiválasztva", "Nope", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-
-
-            int vasaroltaid = vid;
-            int termekid = tid;
-            string mennyiseg = numericUpDown_mennyiseg.Text;
-            int ar = int.Parse(mennyiseg);
             string fizetesmod = "";
-            
-            
             if (radioButton_card.Checked)
             {
                  fizetesmod = "kártya";
@@ -63,15 +60,35 @@ namespace WindowsFormsAppLogin
             {
                 fizetesmod = "készpénz";
             }
-            
+
             // -- STB --
-            Program.command.CommandText = "INSERT INTO `vasarlas` (`vasarloId`, `termekid`, `datum`, `vasaroltdb`, `osszeg`, `fizetesmod`) VALUES (@vasarolta, @termeket, current_timestamp(), @mennyit, @termekszorar, @mivel);";
+            MySqlTransaction tr = null;
+            try
+            {
+                tr = Program.connection.BeginTransaction();
+                Program.command.Transaction = tr;
+            Program.command.CommandText = "INSERT INTO `vasarlas` (`vasarloId`, `termekid`, `datum`, `vasaroltdb`, `osszeg`, `fizetesmod`) VALUES (@vasarolta, @termeket, current_timestamp(), @mennyit, @termekszorar, @mivel)";
             Program.command.Parameters.Clear();
-            Program.command.Parameters.AddWithValue("@vasarolta",vasaroltaid );
-            Program.command.Parameters.AddWithValue("@termeket",termekid );
-            Program.command.Parameters.AddWithValue("@mennyit",mennyiseg );
-            Program.command.Parameters.AddWithValue("@termekszorar", ar);
+            Program.command.Parameters.AddWithValue("@vasarolta", Program.userId);
+            Program.command.Parameters.AddWithValue("@termeket",numericUpDown_termekid.Value);
+            Program.command.Parameters.AddWithValue("@mennyit", numericUpDown_mennyiseg.Value);
+            Program.command.Parameters.AddWithValue("@termekszorar", numericUpDown_mennyiseg.Value * numericUpDown_termekar.Value);
             Program.command.Parameters.AddWithValue("@mivel", fizetesmod);
+            Program.command.ExecuteNonQuery();
+            Program.command.CommandText = $"UPDATE `termek` SET `db`= ({numericUpDown_raktaron.Value- numericUpDown_mennyiseg.Value}) WHERE `termekid`= {numericUpDown_termekid.Value};";
+                
+                MessageBox.Show(Program.command.CommandText);
+            
+                Program.command.ExecuteNonQuery();
+            tr.Commit();
+            MessageBox.Show("Sikeres vásárlás!");
+            }
+            catch (MySqlException ex)
+            {
+
+                tr.Rollback();
+                MessageBox.Show(ex.Message,"Tranzakció probléma");
+            }
             try
             {
                 if (Program.connection.State != ConnectionState.Open)
@@ -82,15 +99,17 @@ namespace WindowsFormsAppLogin
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Hibááááááááás.");
+                MessageBox.Show(Program.command.CommandText);
                 return;
             }
+
         }
 
         private void FormVasarlas_Load(object sender, EventArgs e)
         {
             termekekBetoltese();
 
-            label1.Text = "Lajos";
+            label1.Text = Program.userId.ToString();            
         }
 
         private void termekekBetoltese()
@@ -109,6 +128,9 @@ namespace WindowsFormsAppLogin
                     {
                         Termekek beolvasottTermek = new Termekek(dr.GetInt32("termekid"), dr.GetString("termeknev"), dr.GetInt32("ar"), dr.GetInt32("db"));
                         listBox_termekek.Items.Add(beolvasottTermek);
+                        Termekek beolvasottTermek2 = new Termekek(dr.GetInt32("termekid"), dr.GetString("termeknev"), dr.GetInt32("ar"), dr.GetInt32("db"));
+                        toolStripComboBox_termekek.Items.Add(beolvasottTermek2);
+                        toolStripComboBox_termekek.SelectedIndex = 0;
                     }
                     dr.Close();
                 }
@@ -130,14 +152,50 @@ namespace WindowsFormsAppLogin
 
         private void button_hozzaad_Click(object sender, EventArgs e)
         {
-           
-            
         }
 
         private void button_listaelemtorles_Click(object sender, EventArgs e)
         {
-           
         }
 
+        private void listBox_termekek_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Termekek term = (Termekek)listBox_termekek.SelectedItem;
+            textBox_termeknev.Text = term.termeknev;
+            numericUpDown_termekid.Value = term.termekid;
+            numericUpDown_termekar.Value = term.ar;
+            numericUpDown_mennyiseg.Maximum = term.db;
+            if (term.db > 0)
+            {
+                numericUpDown_raktaron.Value = term.db;
+            }
+            else
+            {
+                numericUpDown_raktaron.Value = 1;
+                numericUpDown_mennyiseg.ReadOnly = true;
+                numericUpDown_mennyiseg.Value = numericUpDown_mennyiseg.Minimum;
+            }
+            
+        }
+
+        private void újToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTermek formTermekUj = new FormTermek("Új");
+            formTermekUj.ShowDialog();
+
+
+        }
+
+        private void módosításToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTermek formTermekModosit = new FormTermek("Módosítás");
+            formTermekModosit.ShowDialog();
+        }
+
+        private void törlésToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTermek formTermekTorol = new FormTermek("Törlés");
+            formTermekTorol.ShowDialog();
+        }
     }
 }
