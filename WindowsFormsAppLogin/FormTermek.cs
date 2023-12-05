@@ -109,7 +109,7 @@ namespace WindowsFormsAppLogin
             Program.command.Parameters.Clear();
             if (button_gomb.Text == "Hozzáadás")
             {
-                MessageBox.Show("Hozzáadva "+muvelet+" szoveg");
+                MessageBox.Show("Hozzáadva");
             }
             else if (button_gomb.Text == "Módosítás")
             {
